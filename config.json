@@ -1,0 +1,105 @@
+{
+  "input_schema": {
+    "customer_name": "string",
+    "email": "string",
+    "query": "string",
+    "priority": "string",
+    "ticket_id": "string"
+  },
+  "stages": [
+    {
+      "id": 1,
+      "name": "INTAKE",
+      "mode": "deterministic",
+      "abilities": ["accept_payload"],
+      "mcp": "COMMON"
+    },
+    {
+      "id": 2,
+      "name": "UNDERSTAND",
+      "mode": "deterministic",
+      "abilities": ["parse_request_text", "extract_entities"],
+      "mcp_map": {
+        "parse_request_text": "COMMON",
+        "extract_entities": "ATLAS"
+      }
+    },
+    {
+      "id": 3,
+      "name": "PREPARE",
+      "mode": "deterministic",
+      "abilities": ["normalize_fields", "enrich_records", "add_flags_calculations"],
+      "mcp_map": {
+        "normalize_fields": "COMMON",
+        "enrich_records": "ATLAS",
+        "add_flags_calculations": "COMMON"
+      }
+    },
+    {
+      "id": 4,
+      "name": "ASK",
+      "mode": "deterministic",
+      "abilities": ["clarify_question"],
+      "mcp": "ATLAS"
+    },
+    {
+      "id": 5,
+      "name": "WAIT",
+      "mode": "deterministic",
+      "abilities": ["extract_answer", "store_answer"],
+      "mcp_map": {
+        "extract_answer": "ATLAS",
+        "store_answer": "STATE"
+      }
+    },
+    {
+      "id": 6,
+      "name": "RETRIEVE",
+      "mode": "deterministic",
+      "abilities": ["knowledge_base_search", "store_data"],
+      "mcp_map": {
+        "knowledge_base_search": "ATLAS",
+        "store_data": "STATE"
+      }
+    },
+    {
+      "id": 7,
+      "name": "DECIDE",
+      "mode": "non-deterministic",
+      "abilities": ["solution_evaluation", "escalation_decision", "update_payload"],
+      "mcp_map": {
+        "solution_evaluation": "COMMON",
+        "escalation_decision": "ATLAS",
+        "update_payload": "STATE"
+      }
+    },
+    {
+      "id": 8,
+      "name": "UPDATE",
+      "mode": "deterministic",
+      "abilities": ["update_ticket", "close_ticket"],
+      "mcp": "ATLAS"
+    },
+    {
+      "id": 9,
+      "name": "CREATE",
+      "mode": "deterministic",
+      "abilities": ["response_generation"],
+      "mcp": "COMMON"
+    },
+    {
+      "id": 10,
+      "name": "DO",
+      "mode": "deterministic",
+      "abilities": ["execute_api_calls", "trigger_notifications"],
+      "mcp": "ATLAS"
+    },
+    {
+      "id": 11,
+      "name": "COMPLETE",
+      "mode": "deterministic",
+      "abilities": ["output_payload"],
+      "mcp": "COMMON"
+    }
+  ]
+}

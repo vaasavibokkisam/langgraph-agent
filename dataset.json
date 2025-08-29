@@ -1,0 +1,37 @@
+[
+  {
+    "customer_name": "Alice",
+    "email": "alice@example.com",
+    "query": "My order hasn’t arrived yet",
+    "priority": "High",
+    "ticket_id": "TCKT12345"
+  },
+  {
+    "customer_name": "Bob",
+    "email": "bob@example.com",
+    "query": "I need help resetting my password",
+    "priority": "Medium",
+    "ticket_id": "TCKT12346"
+  },
+  {
+    "customer_name": "Charlie",
+    "email": "charlie@example.com",
+    "query": "Received a damaged product, want to return",
+    "priority": "High",
+    "ticket_id": "TCKT12347"
+  },
+  {
+    "customer_name": "Diana",
+    "email": "diana@example.com",
+    "query": "Payment went through but order not showing in account",
+    "priority": "Critical",
+    "ticket_id": "TCKT12348"
+  },
+  {
+    "customer_name": "Ethan",
+    "email": "ethan@example.com",
+    "query": "Want to update my shipping address for an order",
+    "priority": "Low",
+    "ticket_id": "TCKT12349"
+  }
+]
